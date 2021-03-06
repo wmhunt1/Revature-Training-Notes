@@ -1,0 +1,26 @@
+* Client-Side validation gives users instant feedback on the information they submitted to a web page. Server-Side validation is necessary because information arriving from the network should never be trusted .
+* Why Validate User Input?
+    * Client-Side validation gives the user faster error checking and they don’t need to submit a form to see that their input was invalid.
+    * For Client-Side validation, built-in HTML validation attributes can be used. .NET Tag Helpers are designed to work with the jQuery Unobtrusive Validation script. Microsoft jQuery Validation Library, uses jQuery’s Validate Plugin. 
+    * Tag Helpers put HTML5 data attributes into form controls, which the Validation Library uses to configure validation logic and display validation messages on the Client-Side. This enables Data Annotations to drive consistent validation on both the Server-Side and the Client-Side (before sending to server).
+    * Custom Client-Side validation is also possible.
+* jQuery Unobtrusive Validation
+    * The jQuery Unobtrusive Validation script is a custom Microsoft front-end library that builds on the jQuery Validate plugin. Without jQuery Unobtrusive Validation, Tag Helpers and HTML helpers use the validation attributes and type metadata from Model properties to render HTML 5 data-attributes. jQuery Unobtrusive Validation parses the data-attributes and passes the logic to jQuery Validate, effectively "copying" the server-side validation logic to the client. This way you can display validation errors to the client using Tag Helpers.  The below scripts are automatically included in .NET template applications. They import the jQuery Unobtrusive Validation scripts.
+* Model State
+    * Model state comes from the filter pipeline and represents errors that originate in two subsystems:
+    * Model Binding and Model Validation.  Model Binding errors are generally data conversion errors.  Ex. an "x" is entered in an integer field.  
+    * Model validation occurs after Model Binding and reports errors when data doesn't conform to business rules.  Ex. a 0 is entered in a field that expects a rating between 1 and 5. A good way to prevent Model Binding errors is to use data annotations on the Mod
+* Model State Validation
+    * Both Model Binding and Model Validation occur before the execution of a Controller Action Method. Web apps must manually inspect ModelState.IsValid (a bool), and if false, typically redisplay the webpage with an error message. Web API Controllers using the [ApiController] attribute automatically respond with an HTTP 400 response containing error details.
+* Custom Data Annotations
+    * ) Create a class that inherits from ValidationAttribute and contains the data to be validated against as a property.  2) Override IsValid() of ValidationAttribute.  IsValid() accepts an object, which is the input to be validated.  An overload of IsValid() also accepts a ValidationContext object, which provides additional information, like the Model instance created by Model Binding. This example validates that the release date for a movie in the Classic genre isn’t after a specified year. The [ClassicMovie] attribute is only run on the server. The Data Annotation on the Model would look like this  [ClassicMovie(1957)]
+* Validation – [Required] Server-Side
+    * https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-3.1#required-validation-on-the-server
+    * The validation system in .NET Core treats non-nullable parameters or bound properties as if they had a [Required] attribute. Value types such as decimal and int are non-nullable. This behavior can be disabled by configuring the SuppressImplicitRequiredAttributeForNonNullableReferenceTypes property of the options object in Startup.ConfigureServices() to true.
+    * Model Binding for a non-nullable Property can sometimes FAIL. This leaves the value null. On the server, a [Required] value is considered missing if the Property is null, but a non-nullable field (int or decimal) is always counted as valid, server-side. This means the [Required] attribute's error message is never displayed on non-nullable fields when this error occurs. 
+    * here are two options to specify a custom error message for server-side validation of non-nullable types. Make the field nullable (Ex, decimal? instead of decimal).  Specify the default error message to be used by Model Binding. (not recommended) 
+* Validation – [Remote] Server-Side
+    * The [Remote] attribute implements client-side validation that requires calling an Action method on the server to determine whether field input is valid. For example, the app may need to verify whether a userName is already in use. 
+    * o do this, create an Action method for JavaScript to call. The jQuery Validate remote method expects a JSON response: true means the input data is valid. false, undefined, null or any other string means the input is invalid.  Display the default error message. Display the string as a custom error message.
+
+ 
