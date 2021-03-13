@@ -1,23 +1,40 @@
 * Intro to .NET
     * What is .Net?
+        * Free, and open source development platform
     * What is C#?
+        * An object-oriented and type-safe coding language.
     * What is the starting point of a program?
+        * The entry point 
     * What is OOP?
+        * Breaking code down into classes for reusability
     * What is type safety
+        * Prevents type errors but not allowing you to switch data types.
 * .Net Architecture
     * What is an SDK?
-    * What's the role of the CLR?
+        * Software development kit like VSC
+    * What's the role of the CLR?: Common language runtime
+        * converts managed code into native code and run the program
     * What's the role of BCL?
+        * Base class library: Provides built in data types and functions
     * What is managed code?
+        * Code that is managed by a run time
     * What is unmanaged code?
+        * Code made outside
     * What's the garbage collection process?
+        * Automatic memory management. Checks for items in the managed heap (where reference type objects are allocated) that are no longer needed and gets rid of them to clear out memory
 * Data Types
     * What is a data type?
+        * Defined by values it can take, language, or operations that can be performed
     * What are the different data types in C#?
+        * String, number, boolean, array
     * Value types vs reference types?
+        * Directly stores data vs storing reference
     * What is CTS?
+        * Common type System - The CTS is a standard definition of the types in .NET compliant languages.
     * What is language interoperability?
+        * ability for languages to interact
     * What is CLS? How is it related to CTS?
+        * Common language specification 
 * App Architecture
     * What does seperation of concerns mean?
     * What are classes?
@@ -26,6 +43,7 @@
     * How many projects can be included in a solution?
 * Collections
     * What are collections?
+        * A class used to represent a set of similar data types as one unit and are used to group and manage related objects. For example, lists, queues, arrays, stacks.
     * What is the root interface of the collections hierarchy?
     * What is the IEnumerable for?
     * Arrays vs ArrayList vs List<T>?
