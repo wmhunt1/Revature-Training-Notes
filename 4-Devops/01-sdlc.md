@@ -24,6 +24,11 @@
     * Backlog
     * Project Log
     * Burndown chart
+* Scrum phases
+    * Initate
+    * Plan and Estimate
+    * Implment
+    * Review and Retrospect Release
 * Backlog
     * Contains the user stories that need to be implemented
     * Each user story would have a point value, the value is the amount of effort it would take to implement the user story
